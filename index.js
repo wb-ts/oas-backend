@@ -53,8 +53,8 @@ app.get("/getAssets/:collection_slug/:offset", async (req, res) => {
 
 });
 
-// app.use(express.static('./client/build'));
+app.use(express.static('./build'));
 
-app.listen(8080, function() {
-  console.log('Server is running on port: 8080');
+app.listen(port, function() {
+  console.log('Server is running on port:' , 8080);
 })
