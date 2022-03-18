@@ -29,13 +29,12 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-app.post("/getAssets", async (req, res) => {
-  console.log(req);
-    let cursor = req.body.cursor , collection_slug = req.body.collection_slug , err_msg = "" ;
+app.get("/getAssets/:collection_slug/:offset", async (req, res) => {
+    let offset = req.params.offset , collection_slug = req.params.collection_slug , err_msg = "" ;
 
     const options = {
         method: 'GET',
-        url: `https://api.opensea.io/api/v1/assets?collection_slug=${collection_slug}&limit=50&cursor=${cursor}`,
+        url: `https://api.opensea.io/api/v1/assets?collection_slug=${collection_slug}&limit=50&offset=${offset}`,
         headers: {
             Accept: 'application/json',
             "x-api-key": x_api_key
@@ -50,7 +49,7 @@ app.post("/getAssets", async (req, res) => {
         err_msg = error;
     });
 
-    if( !err_msg ) res.send(result);
+    if( !err_msg ) res.send(result.assets);
 
 });
 
