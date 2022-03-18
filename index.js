@@ -34,7 +34,7 @@ app.get("/getAssets/:collection_slug/:offset", async (req, res) => {
 
     const options = {
         method: 'GET',
-        url: `https://api.opensea.io/api/v1/assets?collection_slug=${collection_slug}&order_by=pk&order_direction=desc&limit=50&offset=${offset}`,
+        url: `https://api.opensea.io/api/v1/assets?collection_slug=${collection_slug}&order_by=pk&order_direction=asc&limit=50&offset=${offset}`,
         headers: {
             Accept: 'application/json',
             "x-api-key": x_api_key
