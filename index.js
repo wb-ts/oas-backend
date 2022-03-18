@@ -72,7 +72,7 @@ app.get("/getListings/:asset_contract_address/:token_id", async (req, res) => {
     console.log(error);
   });
 
-  res.send(result);
+  res.send(result.listings);
 })
 
 app.use(express.static('./build'));
