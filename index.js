@@ -66,13 +66,13 @@ app.get("/getListings/:asset_contract_address/:token_id", async (req, res) => {
   };
   const result = await axios.request(options)
   .then( (response) => {
-    return response.data 
+    return response.data.listings
   })
   .catch((error) => {
     console.log(error);
   });
 
-  res.send(result.listings);
+  res.send(result);
 })
 
 app.use(express.static('./build'));
